@@ -7,7 +7,7 @@
 > từ lúc đó `plan/4-fe.md` thắng và phải sửa ngược `prompt-fullstack.md` ngay trong cùng phiên).
 
 **Ai thắng khi lệch — đọc trước khi dùng bảng dưới.** Cột *Route* là **route trong wireframe**, không phải route đã chốt.
-Pha 4 chưa chạy (`T-09` ở [task.md](../../task.md)) ⇒ **§3.7 đang thắng wireframe**. Chỗ hai bên nói ngược nhau đã mở
+Pha 4 chưa chạy (`T-09` ở [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md)) ⇒ **§3.7 đang thắng wireframe**. Chỗ hai bên nói ngược nhau đã mở
 finding — xem [finding_fe.md](finding_fe.md). **Đừng tự chọn bên** khi dựng.
 
 **Lệnh đỏ khi file này lệch** (chạy từ gốc repo, cả ba phải rỗng):

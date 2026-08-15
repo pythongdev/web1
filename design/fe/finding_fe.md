@@ -33,7 +33,7 @@ awk '/^### F-FE-/{getline; if (/✅ ĐÓNG|🔓 MỞ|⚠️ MỞ LẠI/) print N
 | [F-FE-05](#f-fe-05) | 🟡 | `wireframes/shared/WIREFRAME_INDEX.md` trỏ tới **những đích không tồn tại** và khai `Pages (21)` trong khi bảng của nó có ít dòng hơn thế | NON-CODE | 🔓 MỞ | Mọi session dùng index để định vị | **Nạp:** [WIREFRAME_INDEX.md](../../wireframes/shared/WIREFRAME_INDEX.md) · **Đã chốt:** danh sách đích gãy **lấy bằng lệnh** ở mục chi tiết, đừng chép vào dòng này; số 21 là **số trần trụi** đúng loại `T-15` đang dựng phép đo để bắt · **Đóng đúng:** lệnh dò link ra rỗng, và dòng `Pages (N)` thay bằng lệnh đếm · **Bẫy:** đừng tạo thư mục rỗng cho khớp link — link trỏ tới thứ không mang sang thì ghi thẳng là không mang sang |
 | [F-FE-06](#f-fe-06) | 🟡 | `client_menu_page_v2/README.md` khai hai file ảnh và excalidraw **vẫn nằm ở thư mục cũ**, nhưng thư mục cũ không còn tồn tại | NON-CODE | 🔓 MỞ | `T-FE-03` khi cần bản vẽ UX mới nhất | **Nạp:** [README.md của v2](../../wireframes/client_menu_page_v2/README.md) mục *Visual assets* · **Đã chốt:** hai file được nêu đích danh là `menu_ver3_ux.excalidraw` và `menu_ver1_done.png` · **Đóng đúng:** hoặc hai file có mặt và lệnh dò ra rỗng, hoặc dòng khai được sửa thành *(không mang sang)* · **Bẫy:** `menu_spec.md` tự khai `assets:` trỏ cùng hai file ở frontmatter — sửa một chỗ mà quên chỗ kia thì lệnh vẫn đỏ |
 | [F-FE-07](#f-fe-07) | 🟡 | Toàn bộ `wireframes/` **chưa được git theo dõi**, trong khi `design/fe/` vừa đặt link cứng vào nó | NON-CODE | 🔓 MỞ | Mọi dòng `task_fe.md` có link tới wireframe | **Nạp:** `git status --short` · **Đã chốt:** thư mục đang ở trạng thái `??`, tức **không có điểm lùi** — sửa hỏng là mất, và [CLAUDE.md §3](../../CLAUDE.md) bắt có điểm lùi trước khi sửa · **Đóng đúng:** `git ls-files wireframes` in ra khác rỗng · **Bẫy:** thư mục có `.excalidraw` và `.png` nặng — commit mù cả cụm là chuyện một chiều, phải xem `du -sh` trước |
-| [F-FE-08](#f-fe-08) | 🟠 | [task.md](../../task.md) khai `design/<lane>/` và sổ finding là **"Chưa mở"**, trong khi cả hai đã tồn tại và đang được dùng | NON-CODE | 🔓 MỞ | Độ tin của bản đồ, không chặn task nào | **Nạp:** `task.md` mục *Chưa mở* · **Đã chốt:** mở sớm là **quyết định của owner**, không phải lỗi; dòng sai là dòng bản đồ chưa chạy theo · **Đóng đúng:** mục *Chưa mở* không còn nhắc `design/<lane>/` và sổ finding, và [CLAUDE.md §2](../../CLAUDE.md) trỏ đúng nhà mới · **Bẫy:** `task.md` và `CLAUDE.md` **đang `M` chưa commit** — sửa lúc này là sửa chồng lên việc dở của session khác. Chờ commit sạch rồi mới chạm |
+| [F-FE-08](#f-fe-08) | 🟠 | [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md) khai `design/<lane>/` và sổ finding là **"Chưa mở"**, trong khi cả hai đã tồn tại và đang được dùng | NON-CODE | 🔓 MỞ | Độ tin của bản đồ, không chặn task nào | **Nạp:** `task_project_preparation.md` mục *Chưa mở* · **Đã chốt:** mở sớm là **quyết định của owner**, không phải lỗi; dòng sai là dòng bản đồ chưa chạy theo · **Đóng đúng:** mục *Chưa mở* không còn nhắc `design/<lane>/` và sổ finding, và [CLAUDE.md §2](../../CLAUDE.md) trỏ đúng nhà mới · **Bẫy:** `task_project_preparation.md` và `CLAUDE.md` **đang `M` chưa commit** — sửa lúc này là sửa chồng lên việc dở của session khác. Chờ commit sạch rồi mới chạm |
 
 ---
 
@@ -253,26 +253,26 @@ kéo theo `.DS_Store` và cả thư mục `trash/` vào lịch sử vĩnh viễn
 
 ### F-FE-08
 
-**Mệnh đề:** `task.md` khai `design/<lane>/` và sổ finding là *"Chưa mở"*, trong khi cả hai đã tồn tại và đang được dùng — 🟠 *(session dựng design/fe, 2026-08-15)*
+**Mệnh đề:** `task_project_preparation.md` khai `design/<lane>/` và sổ finding là *"Chưa mở"*, trong khi cả hai đã tồn tại và đang được dùng — 🟠 *(session dựng design/fe, 2026-08-15)*
 
 **Bằng chứng chạy được:**
 
 ```sh
-grep -n 'Chưa mở' -A 4 task.md              # còn khai design/<lane>/ và finding.md chưa mở
+grep -n 'Chưa mở' -A 4 project_preparation/project_preparation_task_finding/task_project_preparation.md              # còn khai design/<lane>/ và finding.md chưa mở
 ls design/fe/*.md                           # → README.md  finding_fe.md  task_fe.md
 ```
 
 **Vì sao là lỗi hệ thống:** mục *Chưa mở* mô tả **ý định**, và ý định không tự cập nhật khi owner đổi ý.
-`task.md` khai điều kiện mở là *"pha tương ứng chạy xong"*; owner mở sớm hơn — hợp lệ, nhưng bản đồ chưa chạy theo.
+`task_project_preparation.md` khai điều kiện mở là *"pha tương ứng chạy xong"*; owner mở sớm hơn — hợp lệ, nhưng bản đồ chưa chạy theo.
 
 **Hậu quả thật:** [CLAUDE.md](../../CLAUDE.md) dòng 3 xếp *lệch với nhà thật* là **bug phải sửa ngay**. Session sau
-đọc `task.md` sẽ kết luận lane FE chưa có sổ nào, rồi dựng sổ thứ hai — đúng kiểu hỏng mà cả hai guiline cảnh báo.
+đọc `task_project_preparation.md` sẽ kết luận lane FE chưa có sổ nào, rồi dựng sổ thứ hai — đúng kiểu hỏng mà cả hai guiline cảnh báo.
 Thêm một vế: `CLAUDE.md §2` vẫn khai `finding.md (chưa mở)` là nhà của *cái đang sai bây giờ*.
 
-**Cách sửa đề xuất:** NON-CODE sửa **hai** chỗ trong **cùng một** commit — mục *Chưa mở* của `task.md` và dòng
-`finding.md` ở bảng §2 của `CLAUDE.md` — trỏ sang sổ theo lane. Kèm một dòng khai luật: `task.md` giữ đường găng
+**Cách sửa đề xuất:** NON-CODE sửa **hai** chỗ trong **cùng một** commit — mục *Chưa mở* của `task_project_preparation.md` và dòng
+`finding.md` ở bảng §2 của `CLAUDE.md` — trỏ sang sổ theo lane. Kèm một dòng khai luật: `task_project_preparation.md` giữ đường găng
 liên lane, `design/<lane>/task_<lane>.md` giữ task trong lane, không dòng nào chép sang dòng nào.
 
-**Đóng đúng + Bẫy:** `grep -c 'design/<lane>/' task.md` ra `0` ở mục *Chưa mở*, và `CLAUDE.md §2` trỏ đúng nhà mới,
+**Đóng đúng + Bẫy:** `grep -c 'design/<lane>/' project_preparation/project_preparation_task_finding/task_project_preparation.md` ra `0` ở mục *Chưa mở*, và `CLAUDE.md §2` trỏ đúng nhà mới,
 với `wc -l < CLAUDE.md` vẫn `≤ 60`. Bẫy: **cả hai file đang `M` chưa commit** — sửa lúc này là chồng lên việc dở
 của session khác. Chờ commit sạch. Và `CLAUDE.md §5` cấm thêm mục: phải **thay hoặc gộp** chữ cũ.

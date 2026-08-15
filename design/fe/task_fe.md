@@ -3,10 +3,10 @@
 > Cập nhật **2026-08-15** · Lane sở hữu: **FE** · Khuôn: [task_guiline.md](../../project_preparation/task_guiline.md)
 > Kiểm kê màn hình: [README.md](README.md) · Sổ lỗi của lane: [finding_fe.md](finding_fe.md)
 
-**Quan hệ với [task.md](../../task.md) — đọc trước, đây là chỗ dễ đẻ nhà thứ hai nhất:**
-`task.md` giữ **đường găng liên lane** (6 pha kế hoạch, `T-xx`). File này giữ **task dựng từng màn FE** (`T-FE-xx`).
-Hai dải mã không giao nhau, **không dòng nào được chép sang dòng nào**. Dòng `T-09` ở `task.md` (chạy Pha 4, xuất
-`plan/4-fe.md`) là **cổng** của gần hết bảng dưới — nó ở lại `task.md`, không mang sang đây.
+**Quan hệ với [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md) — đọc trước, đây là chỗ dễ đẻ nhà thứ hai nhất:**
+`task_project_preparation.md` giữ **đường găng liên lane** (6 pha kế hoạch, `T-xx`). File này giữ **task dựng từng màn FE** (`T-FE-xx`).
+Hai dải mã không giao nhau, **không dòng nào được chép sang dòng nào**. Dòng `T-09` ở `task_project_preparation.md` (chạy Pha 4, xuất
+`plan/4-fe.md`) là **cổng** của gần hết bảng dưới — nó ở lại `task_project_preparation.md`, không mang sang đây.
 
 **Làm gì tiếp:**
 
@@ -50,10 +50,10 @@ grep -c '^| \*\*T-FE-\|^| ~~\*\*T-FE-' design/fe/task_fe.md               # tổ
 
 ## Luật đọc bảng này
 
-- Cú pháp cột `#` giống [task.md](../../task.md): `| **T-FE-07** |` là đang mở, `| ~~**T-FE-07**~~ ✅ |` là đã xong.
+- Cú pháp cột `#` giống [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md): `| **T-FE-07** |` là đang mở, `| ~~**T-FE-07**~~ ✅ |` là đã xong.
   Mã **không bao giờ tái sử dụng**, kể cả khi dòng bị huỷ.
 - `⛓` là đường găng của lane FE, `⚑NN` là thứ tự tôi tự chọn cho phần ngoài đường găng — **luôn hai chữ số**.
-- **Cấm ký tự `|` bên trong một ô**, kể cả trong backtick, kể cả viết `\|` — lý do và cách thay ở [task.md](../../task.md) mục *Luật đọc bảng này*.
+- **Cấm ký tự `|` bên trong một ô**, kể cả trong backtick, kể cả viết `\|` — lý do và cách thay ở [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md) mục *Luật đọc bảng này*.
 - Cột *Cần xong trước* nhận **cả** mã task và **finding phải đóng**. Đây là chỗ [task_guiline §1](../../project_preparation/task_guiline.md)
   cảnh báo giết 8 task ở dự án trước: finding mà **task này sẽ đóng** thì ghi ở cột *Đầu ra*, **không** ghi ở đây.
   Hai dòng đang dùng nó (`T-FE-16` · `T-FE-17`) đều là finding **chặn** chứ không phải finding chúng đóng.
@@ -63,7 +63,7 @@ grep -c '^| \*\*T-FE-\|^| ~~\*\*T-FE-' design/fe/task_fe.md               # tổ
 
 ## Vì sao bảng này chưa có dòng nào chạy được hôm nay
 
-Cả 20 dòng đều chờ `T-08` hoặc `T-09` ở [task.md](../../task.md) — trừ `T-FE-01`, dòng **duy nhất** làm được ngay
+Cả 20 dòng đều chờ `T-08` hoặc `T-09` ở [sổ task](../../project_preparation/project_preparation_task_finding/task_project_preparation.md) — trừ `T-FE-01`, dòng **duy nhất** làm được ngay
 và cũng là dòng phải làm trước. Đó không phải kẹt: [CLAUDE.md §4](../../CLAUDE.md) và prompt-fullstack §4.11 cấm
 nhảy pha, mà FE là pha 4. Bảng này viết trước để **biết mình sắp dựng bao nhiêu và dựng cái nào**, không phải để bắt đầu gõ.
 

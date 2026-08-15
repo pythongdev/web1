@@ -1,7 +1,7 @@
 # Bảng task — form nào, cột gì, vì sao có cột đó
 
-> Cập nhật **2026-08-14** · Lane sở hữu: **NON-CODE**. Nhà của **cách dựng bảng task cho một dự án mới**.
-> Bảng task thật của dự án này ở [task.md](../task.md); luật làm việc ở [CLAUDE.md](../CLAUDE.md).
+> Cập nhật **2026-08-15** · Lane sở hữu: **NON-CODE**. Nhà của **cách dựng bảng task cho một dự án mới**.
+> Bảng task thật của dự án này ở [task_project_preparation.md](project_preparation_task_finding/task_project_preparation.md); luật làm việc ở [CLAUDE.md](../CLAUDE.md).
 > File này **không giữ trạng thái task nào** — nó giữ *vì sao khuôn có dạng đó* và **cái giá đã trả để biết**.
 > Lệch ⇒ task.md / CLAUDE.md thắng. Số liệu dựng lại bằng lệnh ở §5, thống kê gốc ở [06-lich-su-du-an.md](06-lich-su-du-an.md).
 

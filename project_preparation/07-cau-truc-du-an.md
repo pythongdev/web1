@@ -1,6 +1,6 @@
 # Bộ khung dự án — file nào tồn tại, lane nào giữ, cắt cái gì
 
-> Cập nhật **2026-08-14** · Lane sở hữu: **NON-CODE**. Nhà của **bộ khung thư mục cho một dự án mới**:
+> Cập nhật **2026-08-15** · Lane sở hữu: **NON-CODE**. Nhà của **bộ khung thư mục cho một dự án mới**:
 > *file nào được phép tồn tại, mỗi file giữ sự thật gì, lệnh nào bắt được khi nó trôi.*
 > Bộ khung thật của dự án này ở [CLAUDE.md](../CLAUDE.md) §1–§2; lệch ⇒ **CLAUDE.md thắng**, dòng ở đây là bug.
 >
@@ -152,7 +152,7 @@ Vượt ngưỡng nghĩa là **dừng làm sổ sách, quay về làm sản ph�
 | dòng `.md` trên mỗi file code | > **100** | ~7.900 / 25 ≈ 320 |
 
 Ba ngưỡng này **không phải chất lượng**, chúng là **cảnh báo lệch trọng tâm**. Vượt mà vẫn còn lý do chính đáng thì
-ghi lý do vào [task.md](../task.md), đừng sửa ngưỡng.
+ghi lý do vào [sổ task của dự án](project_preparation_task_finding/task_project_preparation.md), đừng sửa ngưỡng.
 
 ## 8. Bản mẫu cho dự án mới
 

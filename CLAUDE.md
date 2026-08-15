@@ -6,7 +6,7 @@
 
 ## 1. Định tuyến lane — dòng đầu MỌI session phải khai `Lane: <X> · Task: T-xx`
 
-Đọc prompt xong thì chọn lane, nạp **đúng một gói**, không nạp toàn cảnh. Không có lane ⇒ chưa được chạm file nào.
+**Vai của mọi session: kỹ sư thi công đúng một lane, không phải chủ dự án** — hai cách đều đúng ⇒ chọn cách **có lệnh chứng minh**; **thu đúng tiền** thắng code đẹp; thiếu dữ kiện thì **hỏi**, không đoán *(chưa có lệnh)*. Prompt chỉ ghi mã task ⇒ tra dòng đó ở [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) lấy lane, rồi nạp **đúng một gói** dưới đây, không nạp toàn cảnh. Không có lane ⇒ chưa được chạm file nào.
 
 | Lane | Nạp đúng gói này | Biên nhận — đúng **một** lệnh, dán output |
 |---|---|---|
@@ -15,7 +15,7 @@
 | **BE** | prompt-fullstack §3.6 + §9.3 · `plan/2-db.md` | `go test ./...` xanh, đủ ca ở §9.3 |
 | **FE** | prompt-fullstack §3.7 + §3.2b · `plan/3-be.md` | `npm run build` + typecheck xanh, type **sinh** từ hợp đồng API |
 | **DevOps** | prompt-fullstack §3.4, §6.6, §6.8, §6.9 | `docker compose up -d` rồi `/healthz` → `200` |
-| **NON-CODE** | [task.md](task.md) · [07](project_preparation/07-cau-truc-du-an.md) · khuôn của sổ đang sửa | `make check` → `0` |
+| **NON-CODE** | [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) · [07](project_preparation/07-cau-truc-du-an.md) · khuôn của sổ đang sửa | `make check` → `0` |
 
 Khuôn khi phải **dựng/sửa** một sổ (là *khuôn*, không phải nội dung — đừng chép sang chỗ khác): bảng task → [task_guiline](project_preparation/task_guiline.md) ·
 sổ finding → [finding_guiline](project_preparation/finding_guiline.md) · prompt → [prompt_guiline](project_preparation/prompt_guiline.md) · bộ khung thư mục → [07](project_preparation/07-cau-truc-du-an.md).
@@ -27,8 +27,8 @@ sổ finding → [finding_guiline](project_preparation/finding_guiline.md) · pr
 | Sự thật | Nhà duy nhất | Ai thắng khi lệch |
 |---|---|---|
 | Phạm vi · giá · hình dạng dữ liệu · hợp đồng API | [prompt-fullstack.md](project_preparation/prompt-fullstack.md) | `plan/*.md` của pha đã chạy xong; rồi **code thắng tài liệu** — và phải sửa ngược lại ngay trong cùng phiên |
-| Làm gì tiếp, theo thứ tự nào, xong/chưa | [task.md](task.md) | task.md |
-| Cái đang **sai ngay bây giờ** | `finding.md` (chưa mở — điều kiện mở nằm ở [task.md](task.md) §"Chưa mở") | finding.md |
+| Làm gì tiếp, theo thứ tự nào, xong/chưa | [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) | task_project_preparation.md |
+| Cái đang **sai ngay bây giờ** | `finding_project_preparation.md` cạnh sổ task (chưa mở — điều kiện mở nằm ở [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) §"Chưa mở") | sổ finding |
 | Mọi lệnh của dự án | `Makefile` (CI **gọi lại**, cấm chép lệnh ra chỗ khác) | Makefile |
 | Trạng thái · hiện trạng · số đo | **không có nhà** — `make status`, `git log`, `ls` | lệnh vừa chạy |
 | Kiểu hỏng đã trả tiền + vì sao có luật | [project_issue.md](project_preparation/project_issue.md) | file này (CLAUDE.md) — còn CLAUDE.md thua **nhà thật** của mọi sự thật khác |
@@ -42,7 +42,7 @@ sổ finding → [finding_guiline](project_preparation/finding_guiline.md) · pr
 5. **LÀM** — chỉ trong phạm vi đã khai. Sửa lỗi ⇒ **đỏ trên code cũ, xanh trên code mới**, dán cả hai output.
 6. **TỰ RÀ** — `git diff --stat`; thấy file lạ ⇒ **đừng stage, cũng đừng `git restore`** (việc chưa commit của lane khác) → dừng và báo.
 7. **KIỂM CHỨNG** — chạy đúng lệnh biên nhận của lane, dán output thật. *"Đã viết code" ≠ "đã chạy".*
-8. **GHI SỔ** — chưa ghi thì việc **chưa xong**. Đánh dấu xong cần đủ **ba**: biên nhận có output · commit chứa thay đổi · gạch dòng ở [task.md](task.md) kèm ngày.
+8. **GHI SỔ** — chưa ghi thì việc **chưa xong**. Đánh dấu xong cần đủ **ba**: biên nhận có output · commit chứa thay đổi · gạch dòng ở [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) kèm ngày.
 
 ## 4. Luật cứng — vi phạm là làm lại
 
