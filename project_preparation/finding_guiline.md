@@ -1,6 +1,6 @@
 # Sổ finding — form nào, cột gì, vì sao có cột đó
 
-> Cập nhật **2026-08-14** · Lane sở hữu: **NON-CODE**. Nhà của **cách dựng sổ finding cho một dự án mới**.
+> Cập nhật **2026-08-16** · Lane sở hữu: **NON-CODE**. Nhà của **cách dựng sổ finding cho một dự án mới**.
 > Sổ thật của dự án này ở [finding.md](../finding.md); luật ở [CLAUDE.md §7](../CLAUDE.md);
 > *vì sao sổ dự án này phình tới cỡ hiện tại* ở [06-lich-su-du-an.md §3](06-lich-su-du-an.md) — **không chép lại ở đây**.
 > File này giữ đúng một thứ chưa có nhà: **khuôn sổ + luật vào/ra + phép đo sức khoẻ sổ**, viết để mang sang dự án sau.
@@ -30,6 +30,23 @@ không thể đóng, nằm vĩnh viễn ở cột MỞ, kéo tỉ lệ đóng xu
 (lệnh đếm + phân tích ở [06 §3.1](06-lich-su-du-an.md)). **Sổ mất khả năng báo động vì mọi thứ đều kêu.**
 
 > **Luật một cửa:** một dòng chỉ được **gỡ** khỏi sổ khi đã có mã task nhận nó. Gỡ trước là mất việc, không phải dọn sổ.
+
+**Luật bàn giao chéo lane.** Đang làm lane A mà phát hiện thứ thuộc lane B — đây là tình huống **phổ biến nhất**,
+không phải ngoại lệ. Ba bước, không bước nào bỏ được:
+
+1. **Ghi vào sổ finding của chính lane A**, cột *Lane* điền **lane đóng được** (B), không phải lane phát hiện (A).
+   **Cấm ghi vào sổ của lane B** — sổ đó do lane B sở hữu, và [project_issue §7](project_issue.md) cấm chạm file lane khác kể cả một dòng.
+2. **Mở một dòng ở hàng đợi liên lane** (`T-xx`, cột *Lane* = B). Đây là bước biến *báo* thành *giao*.
+   Bỏ bước này thì dòng nằm chết trong sổ của A: lane B không đọc sổ của A, và không lệnh nào bắt được.
+3. **Không tự đóng**, kể cả khi biết chính xác cách sửa — biên nhận của lane B là **lệnh của lane B**,
+   lane A chạy không ra. Lane A chỉ được **báo và chờ**.
+
+Vì sao luật này lên đây thay vì để tự giác: nó đã lặp **ba lần trở lên** — 8 finding con trỏ gãy cùng một khuôn
+lặp 5 lần ở đời trước ([task_guiline §6](task_guiline.md)); một sổ lane có **toàn bộ** dòng chờ lane khác đóng;
+và một session giấy tờ tìm ra dòng đóng được của lane khác mà không được chạm. Ngưỡng *"lặp lần thứ ba ⇒ lên thành luật"* (§5.5) đã đạt.
+
+**Hai cách hỏng đối xứng, cùng bị phép đo 5 ở §6 bắt:** *tự sửa* (nhanh, phá quyền sở hữu, không ai review được)
+và *chỉ báo* (đúng luật ở bước 1, quên bước 2, dòng chết im lặng). Cách thứ hai nguy hiểm hơn vì nó **trông như đã làm đúng**.
 
 ## 2. Khuôn 7 cột của bảng tổng hợp
 
@@ -97,7 +114,7 @@ nên câu trả lời phụ thuộc chỗ đoán — lệnh dò lệch đầu ti
 > người ta làm, vế nào chỉ có luật thì không.** Dự án sau: gắn phép đo #3 của §6 vào cổng chất lượng ngay từ ngày đầu,
 > đừng chờ luật tự giác.
 
-## 6. Bốn phép đo sức khoẻ của sổ
+## 6. Năm phép đo sức khoẻ của sổ
 
 Chạy từ gốc repo. Lane này không có compiler nên đây **là** biên nhận của nó:
 
@@ -110,8 +127,27 @@ done; echo                                                          # 3. đóng 
 awk '/^### F-/{getline; if (/✅ ĐÓNG|🔓 MỞ|⚠️ MỞ LẠI/) print NR}' finding.md   # 4. trạng thái ghi ngoài cột — phải rỗng
 ```
 
+**Phép đo 5 — *báo mà không giao*.** Gác đúng bước 2 của luật bàn giao chéo lane (§1). Quét **mọi** sổ finding,
+lấy lane sở hữu từ chính header của sổ, rồi đòi mỗi dòng MỞ có `Lane` ≠ chủ sổ phải có một **dòng task thật** ở
+hàng đợi liên lane nhận nó. Phải rỗng:
+
+```sh
+T=project_preparation/project_preparation_task_finding/task_project_preparation.md
+for s in $(find project_preparation design -name 'finding_*.md' -not -name 'finding_guiline.md' | sort); do
+  own=$(sed -n 's/.*Lane sở hữu: \*\*\([A-Z-]*\)\*\*.*/\1/p' "$s" | head -1)
+  awk -F'|' -v own="$own" '/^\| \[F-/ && $6 ~ /MỞ/ {
+    gsub(/ /,"",$5); if ($5 != own) { match($2,/F-[A-Z0-9-]+/); print substr($2,RSTART,RLENGTH)" "$5 } }' "$s"
+done | while read -r id lane; do
+  grep -qE "^\| (~~)?\*\*T-.*$id" $T || echo "  BÁO MÀ KHÔNG GIAO: $id (chờ lane $lane)"
+done
+```
+
+Hai chỗ lệnh này **phải** chặt, đã trả tiền để biết: đòi **dòng task thật** (`^| **T-`) chứ không phải
+`grep` cả file — một lần **nhắc tên** finding trong văn xuôi đủ làm nó im, và nhắc tên không phải là giao việc.
+Và so `$5` với lane **đọc từ header sổ**, không hardcode tên lane — hardcode thì sổ lane mới sinh ra là gác hụt.
+
 Lệnh 3 lấy ID **từ cột đầu** (`awk -F'|' '{print $2}'`), không `grep` cả dòng — cả dòng còn chứa link tới finding khác
-trong ô *Context* nên sẽ đếm nhầm. Phép đo thứ năm nằm ở sổ kia: *finding nào không task nào đóng*
+trong ô *Context* nên sẽ đếm nhầm. Còn một phép đo nữa nằm ở sổ kia: *finding nào không task nào đóng*
 ([task_guiline.md §5](task_guiline.md)) — chạy cả hai mới khép được vòng.
 
 ## 7. Sáu bài học mang sang dự án sau
@@ -122,6 +158,7 @@ trong ô *Context* nên sẽ đếm nhầm. Phép đo thứ năm nằm ở sổ 
 | Đóng xong mà lần sau vẫn giẫm lại | Không rút ra luật, chỉ kể lại sự cố | Luật 5.4 + gắn phép đo #3 vào cổng chất lượng |
 | Lệnh kiểm cho kết quả không tin được | Một sự thật ghi ở 3 chỗ | Trạng thái chỉ sống ở cột *Trạng thái* (§4) |
 | Lane không-code chiếm 22/68 dòng | Lane duy nhất **không có compiler**: chữ sai vẫn "build xanh" | Mỗi thay đổi giấy tờ phải kèm **một lệnh đọc lại** |
+| Sổ một lane có **toàn bộ** dòng chờ lane khác đóng, không lane nào tới nhận | Luật cũ dừng ở *"mở finding + task"* mà **không nói mở ở đâu** — mà sổ lane B thì lane A bị cấm chạm ⇒ tắc | Luật bàn giao chéo lane 3 bước (§1) + phép đo 5 (§6) |
 | Số/version trong finding lệch code sau vài giờ | Ghi số thay vì ghi lệnh sinh ra số | Đếm được bằng lệnh thì ghi lệnh; số đo thì **ghim khoảng commit** |
 | Một đợt dời file đẻ 8 finding, khuôn lặp 5 lần | Luật *mỗi file một lane sở hữu* — đây là **giá phải trả**, không phải sơ suất | Biết mình đang trả giá gì; mở sẵn task dọn cho từng lane trong cùng commit dời |
 

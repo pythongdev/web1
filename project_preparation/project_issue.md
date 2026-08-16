@@ -1,6 +1,6 @@
 # Mười ba kiểu hỏng của một dự án chạy bằng agent — và luật rút ra
 
-> Cập nhật **2026-08-15**. Nhà của **danh mục kiểu hỏng + luật rút ra từ nó**, viết cho người **chưa biết gì** về
+> Cập nhật **2026-08-16**. Nhà của **danh mục kiểu hỏng + luật rút ra từ nó**, viết cho người **chưa biết gì** về
 > dự án: không cần đọc code, không cần biết dự án làm sản phẩm gì, không cần mở file nào khác. Đây là **gốc của bộ
 > luật** trong file luật dự án (`CLAUDE.md`); lệch ⇒ **file luật thắng** — file này chỉ trả lời *vì sao*.
 >
@@ -93,7 +93,8 @@ Xếp một sự cố mới vào đúng mục bằng ba câu: *ai trả giá ti�
 - **Nguyên nhân thật.** Checker đếm **dòng**, không đọc **nghĩa**: một file 24 dòng chép nguyên ba luật vẫn xanh.
 - **Luật rút ra.** Mỗi file có **đúng một lane sở hữu**; file lane chỉ giữ thứ **chỉ lane đó cần** — biên nhận và
   bẫy của lane. Luật chung nằm ở file gốc và **không chép về**. Sửa file của lane khác — kể cả một dòng — là việc
-  của lane đó: mở finding + task, đừng tiện tay.
+  của lane đó, và **bàn giao chéo lane có đúng một đường**: ghi finding vào **sổ của chính mình** với cột *Lane* =
+  lane **đóng được**, rồi mở một dòng ở **hàng đợi liên lane**. Báo mà không giao ⇒ dòng nằm chết ở sổ người phát hiện.
 - **Kiểm trước khi tin.** Cơ chế tự nạp của công cụ phải **đo thật** trên phiên bản đang dùng — ở đây một lần từ chối
   đổi tên file vì *"sợ mất autoload"* hoá ra là sợ thứ không tồn tại.
 

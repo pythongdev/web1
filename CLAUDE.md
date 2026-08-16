@@ -1,6 +1,6 @@
 # CLAUDE.md — luật làm việc + bản đồ. **File này không giữ sự thật nào.**
 
-> Cập nhật **2026-08-15** · Lane sở hữu: **NON-CODE** · Trần cứng **≤ 60 dòng** (`wc -l < CLAUDE.md`).
+> Cập nhật **2026-08-16** · Lane sở hữu: **NON-CODE** · Trần cứng **≤ 60 dòng** (`wc -l < CLAUDE.md`).
 > Lệch với nhà thật ⇒ **nhà thật thắng**; dòng sai ở đây là **bug phải sửa ngay**, không phải việc để sau.
 > Vì sao có từng luật (mỗi luật là một lần đã trả tiền): [project_issue.md](project_preparation/project_issue.md).
 
@@ -28,7 +28,7 @@ sổ finding → [finding_guiline](project_preparation/finding_guiline.md) · pr
 |---|---|---|
 | Phạm vi · giá · hình dạng dữ liệu · hợp đồng API | [prompt-fullstack.md](project_preparation/prompt-fullstack.md) | `plan/*.md` của pha đã chạy xong; rồi **code thắng tài liệu** — và phải sửa ngược lại ngay trong cùng phiên |
 | Làm gì tiếp, theo thứ tự nào, xong/chưa | [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) | task_project_preparation.md |
-| Cái đang **sai ngay bây giờ** | `finding_project_preparation.md` cạnh sổ task (chưa mở — điều kiện mở nằm ở [sổ task](project_preparation/project_preparation_task_finding/task_project_preparation.md) §"Chưa mở") | sổ finding |
+| Cái đang **sai ngay bây giờ** | [sổ finding](project_preparation/project_preparation_task_finding/finding_project_preparation.md) cạnh sổ task (mở 2026-08-16); sổ lỗi theo lane ở `design/<lane>/finding_<lane>.md` | sổ finding |
 | Mọi lệnh của dự án | `Makefile` (CI **gọi lại**, cấm chép lệnh ra chỗ khác) | Makefile |
 | Trạng thái · hiện trạng · số đo | **không có nhà** — `make status`, `git log`, `ls` | lệnh vừa chạy |
 | Kiểu hỏng đã trả tiền + vì sao có luật | [project_issue.md](project_preparation/project_issue.md) | file này (CLAUDE.md) — còn CLAUDE.md thua **nhà thật** của mọi sự thật khác |
@@ -51,7 +51,7 @@ sổ finding → [finding_guiline](project_preparation/finding_guiline.md) · pr
 - **Lùi thật** (`reset --hard`, xoá nhánh, `push --force`, xoá volume, `DROP`) **thuộc owner**: agent phát hiện đã sửa nhầm thì **dừng và báo**, không tự lùi.
 - **Đầu ra là lệnh, không phải tính từ** ("hoạt động tốt" / "đã rà" không đóng được gì), và **đếm được bằng lệnh thì ghi lệnh, đừng ghi số** — số trần trụi trong tài liệu hỏng sớm nhất.
 - **Mỗi file `.md` có dòng `Cập nhật <ngày>`**; sửa nội dung ⇒ đổi ngày **trong cùng commit**. Sửa code làm tài liệu sai ⇒ sửa tài liệu trong cùng commit, hoặc mở finding ngay — không có lựa chọn thứ ba.
-- **Mỗi file có đúng một lane sở hữu.** Cần sửa file của lane khác — kể cả một dòng — thì mở finding + task, đừng tiện tay.
+- **Mỗi file có đúng một lane sở hữu.** Chạm file lane khác — kể cả một dòng — thì **bàn giao, đúng một đường**: ghi finding vào **sổ của chính lane mình** (cột *Lane* = lane **đóng được**) **và** mở dòng ở [hàng đợi liên lane](project_preparation/project_preparation_task_finding/task_project_preparation.md); rồi **báo và chờ**, không tự đóng. *Tự sửa* và *báo mà không giao* đều là vi phạm — lệnh gác: [finding_guiline §6](project_preparation/finding_guiline.md) phép đo 5.
 - **Hai sổ không bao giờ trộn:** nợ xây dựng (*"chưa có X"*) là **task**; sổ finding chỉ nhận **mệnh đề sai được**, và đóng finding phải để lại một dòng *Bài học giữ lại* nói **luật nào đổi**, không kể lại sự cố.
 - **Cấm file chỉ để điều hướng.** File mới phải giữ một sự thật chưa có ở đâu khác · có lane sở hữu · có lệnh đỏ khi nó lệch — thiếu một vế thì chưa tới lúc sinh nó ra.
 
